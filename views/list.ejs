@@ -17,10 +17,13 @@
 
     <div class="box" id="items">
         <% newItemList.forEach(function(item){ %>
-        <div class="item">
-            <input type="checkbox">
-            <p> <%= item %> </p>
-        </div>
+        <form action="/delete" method="post">
+            <div class="item">
+                <input type="checkbox" onchange="this.form.submit()" name="checkItem" value="<%= item._id %>">
+                <p> <%= item.name %> </p>
+            </div>
+            <input type="hidden" name="list" value="<%= listTitleName %>"></input>
+        </form>
         <% }); %>
 
         <form class="item" action="/" method="post">
